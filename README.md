@@ -23,9 +23,9 @@
     <br />
     <a href="">View Demo</a>
     ·
-    <a href="https://github.com/wnosphan/CV_Projec/issues">Report Bug</a>
+    <a href="https://github.com/dokkazy/cvproject/issues">Report Bug</a>
     ·
-    <a href="https://github.com/wnosphan/CV_Projec/issues">Request Feature</a>
+    <a href="https://github.com/dokkazy/cvproject/issues">Request Feature</a>
   </p>
 </div>
 
@@ -52,8 +52,6 @@
   </ol>
 </details>
 -->
-
-
 
 <!-- ABOUT THE PROJECT -->
 
