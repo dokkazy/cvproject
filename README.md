@@ -18,7 +18,7 @@
 
   <p align="center">
     <br />
-    <a href=""><strong>Explore the docs »</strong></a>
+    <a href="https://drive.google.com/drive/folders/1DvQY86IaHBM5-khyLAmYKA1RjR_unyr4?usp=sharing"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="">View Demo</a>
@@ -62,7 +62,7 @@
 
 <!--[![Product Name Screen Shot][product-screenshot]](https://example.com)-->
 
-The goal of this project is to secure CV_Project using Keycloak. cv-project consists of two applications: one is a Spring Boot Rest API called cvproject-server and another is a React application called cvproject-ui.
+The goal of this project is to secure `cvproject` using Keycloak. `cvproject` consists of two applications: one is a Spring Boot Rest API called `CVProject_Server` and another is a React application called `cvproject-ui`.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -86,105 +86,25 @@ The goal of this project is to secure CV_Project using Keycloak. cv-project cons
 
 
 <!-- GETTING STARTED -->
-## Install Docker 
-
+## Start Project
+### Run with docker
+- Open `docker-compose` file in `CV_Project/CVProject_Server` and change the project path
   ```
-   https://www.docker.com/products/docker-desktop
+  ...
+   nodejs:
+    build: D:\FORK\CV_Project\cvproject-ui
+  ...
+   mail:
+    build: D:\FORK\CV_Project\Mail
   ```
-
-
-## Start Environment
-<!--
-- In a terminal and inside `CV_Project` root folder run
+- Open terminal and navigate to `CV_Project/CVProject_Server` folder and run the command below
+- Make sure that you have downloaded docker
   ```
-  docker compose up -d
+  docker compose up
   ```
+- After running successfully, access to `localhost:8080` to config keycloak
+  vài hình để cofig keycloak
 
-- Wait for all Docker containers to be up and running. To check it, run
-  ```
-  docker compose ps
-  ```
-  Set up CLient Keycloak
-  -->
-- Open Keycloak and Login with username & password = admin
- 
-   ```
-    http://localhost:8080
-   ```
-
-- Create new Client
-
-  ```
-   https://huongdanjava.com/vi/them-moi-client-ho-tro-grant-type-authorization-code-cua-oauth2-trong-keycloak.html
-  ```
-
-- Create new User
-
-  ```
-   https://huongdanjava.com/vi/tao-moi-user-trong-keycloak.html
-  ```
-
-## Running CV_Project using Maven & Npm
-
-- **Installation**
-
-  - Download folder and unzip
-    
-    ```
-    https://github.com/wnosphan/CV_Project
-    ```
-- **cvproject-ui**
-  - Open another terminal and navigate to `CV_Project/cvproject-ui` folder
-  
-   - Run the command below if you are running the application for the first time
-
-      ```
-      npm install
-      ```
-   - Navigate to `cvproject-ui\src` and open .env file
-
-     ```
-      REACT_APP_API_URL=http://localhost:8088
-      REACT_APP_PROJECT_URL=http://localhost:3001
-      
-      REACT_APP_OIDC_AUTHORITY=http://localhost:8080/realms/cvproject
-      REACT_APP_OIDC_CLIENT_ID=react-auth
-      REACT_APP_OIDC_CLIENT_SECRET=oLTNsGCxnKA6mPxcmnQuEuHApBi5x9Jo
-
-      ```
-
-  - Run the `npm` command below to start the application if you run without docker
-      ```
-      npm start
-      ```
-      
-- **cvproject-server**
-  - Open another terminal and navigate to `CV_Project/cvproject-ui` folder
-  - Open application.yml and set up enviroment
-      ```
-     port: 8088
-     fe:
-       base-url: http://localhost:3000
-     keycloak:
-       base-url: http://localhost:8080/realms/{your-realms-keycloak}/protocol/openid-connect/token/introspect
-       realm: your-realms-keycloak
-       client-id: your-client-id
-       client-secret: your-client-secret
-      ```
-    
-  - Open CMD in folder
-  
-      ```
-      .\CV_Project\CVProject_Server
-      ```
-    CMD
-     ```
-      docker build --tag spring-boot-docker
-      ```
-    then
-     ```
-      docker run -dp 8085:8088 --name springboot-docker-container -v %cd%:/app spring-boot-docker
-      ```
   <p align="right">(<a href="#readme-top">back to top</a>)</p>
   
 
@@ -200,54 +120,9 @@ The goal of this project is to secure CV_Project using Keycloak. cv-project cons
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-## Testing cvproject-server endpoints
-
-### Getting Access Token
-
-- Open a terminal
-
-- Run the following commands to get the access token
-  ```
-  curl -X POST \
-    "http://localhost:8080/realms/(your-realm)/protocol/openid-connect/token" \
-    -H "Content-Type: application/x-www-form-urlencoded" \
-    -d "username=your-user" \
-    -d "password=your-password" \
-    -d "grant_type=password" \
-    -d "client_id=your-client-id" \
-    -d "client_secret=your-client-secret" \
-  ```
-
-- This is how it looks like
-  ```
-  curl -X POST "http://localhost:8080/realms/cvproject/protocol/openid-connect/token" -H "Content-Type: application/x-www-form-urlencoded" -d "username=julian" -d "password=123" -d "grant_type=password" -d "client_id=react-auth" -d "client_secret=oLTNsGCxnKA6mPxcmnQuEuHApBi5x9Jo"
-  ```
-
-- The response should provide us with a JWT token like:
-  ```
-    {
-      "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJfaUkyTS02dGw1SWJ2eVF3M1hIQkNIc3BoUHBIeko1eHpGU0x3ZFJwdzV3In0.eyJleHAiOjE3MDk2MDk0NTIsImlhdCI6MTcwOTYwOTE1MiwianRpIjoiNTkyZDIxMTItNDlmYi00ZTY2LWEyNWMtZjFiODRjYzY1NWU1IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9jdnByb2plY3QiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiM2ViZjE0ZWEtNjM4Yy00N2E4LTg0NjMtYzJhY2QyYjJkZDA4IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoicmVhY3QtYXV0aCIsInNlc3Npb25fc3RhdGUiOiIxYjM4MjJkZi0xZjYxLTRlYWYtOWI2My1mYjdiZGNmOGIwYmQiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbImh0dHA6Ly9sb2NhbGhvc3Q6MzAwNyIsImh0dHA6Ly9sb2NhbGhvc3Q6MzAwNiIsImh0dHA6Ly9sb2NhbGhvc3Q6ODA4MSIsImh0dHA6Ly9sb2NhbGhvc3Q6MzAwMSIsImh0dHA6Ly9sb2NhbGhvc3Q6MzAwMCJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLWsiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsInNpZCI6IjFiMzgyMmRmLTFmNjEtNGVhZi05YjYzLWZiN2JkY2Y4YjBiZCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoianUgbGlhbiIsInByZWZlcnJlZF91c2VybmFtZSI6Imp1bGlhbiIsImdpdmVuX25hbWUiOiJqdSIsImZhbWlseV9uYW1lIjoibGlhbiJ9.U9V1GIDTFRW4R_pWIavPuwNkEQX44iKBTSFTSf8_u0tHFBvvd9wYW_hLuNUdEGa9Ca1i7CDZ-ooptKMUgEoDhFeZLJGkrMkxmyoZjVeeu9bnaNCzWlDfpbUtaTeBUcQZ2LWg-dy3fS2vjhA0y_N5mFc1g0cyAMY88dJOvbIbSihe9UlMzhYRYRVu1rNzxixbqTS8NcbP3oftb80VYBVtB0O5koO012aKc61mrt9ncn-UCaDRRi_Nwq5lzS5l0j1A5AAWnX6cMQdL55cbADakiopYAe2UNCxTJe4BRoXd6WvXpznihcXpCHmokNTToyYldrs6e24zHfY17qlSyNkMyQ",
-      "expires_in": 300,
-      "refresh_expires_in": 1800,
-      "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI2MjdkMzA3OS1jOGE2LTQxODQtYWIwMy1kMTZkYWNmMWM4YmQifQ.eyJleHAiOjE3MDk2MTA5NTIsImlhdCI6MTcwOTYwOTE1MiwianRpIjoiNTAwYzIwM2MtYjczZS00Y2U5LTgzMDktN2JlMzYxZDQyMWFmIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9jdnByb2plY3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVhbG1zL2N2cHJvamVjdCIsInN1YiI6IjNlYmYxNGVhLTYzOGMtNDdhOC04NDYzLWMyYWNkMmIyZGQwOCIsInR5cCI6IlJlZnJlc2giLCJhenAiOiJyZWFjdC1hdXRoIiwic2Vzc2lvbl9zdGF0ZSI6IjFiMzgyMmRmLTFmNjEtNGVhZi05YjYzLWZiN2JkY2Y4YjBiZCIsInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsInNpZCI6IjFiMzgyMmRmLTFmNjEtNGVhZi05YjYzLWZiN2JkY2Y4YjBiZCJ9.jNkTkSyv4hVnzw701Oel8OPtGYvpn5jEgA7IUuE3ndc",
-      "token_type": "Bearer",
-      "not-before-policy": 0,
-      "session_state": "1b3822df-1f61-4eaf-9b63-fb7bdcf8b0bd",
-      "scope": "profile email"
-    }
-  ```
-
-  > **Note**: In [jwt.io](https://jwt.io), you can decode and verify the `JWT` access token
-
-- Get the access token and run the command:
-  ```
-    curl -i http://localhost:8088/hello \-H "Authorization: Bearer your-access-token"
-  ```
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## Shutdown
 
-- To stop `cvproject-server` and `cvproject-ui`, go to the terminals where they are running and press `Ctrl+C`
+- To stop `CV_Project`, go to the terminals where they are running and press `Ctrl+C`
 
 - To stop and remove docker compose containers, network and volumes, go to a terminal and, inside `CV_Project` root folder, run the command below
   ```
@@ -269,6 +144,7 @@ The goal of this project is to secure CV_Project using Keycloak. cv-project cons
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
+<!--
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -283,7 +159,7 @@ Don't forget to give the project a star! Thanks again!
 5. Open a Pull Request
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+-->
 ## Contributor
 
 <table>
@@ -305,16 +181,16 @@ Don't forget to give the project a star! Thanks again!
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/wnosphan/CV_Project.svg?style=for-the-badge
 [contributors-url]: https://github.com/wnosphan/CV_Project/graphs/contributors
-[commits-shield]: https://img.shields.io/github/commit-activity/w/wnosphan/CV_Project?style=for-the-badge&labelColor=000000
-[commits-url]: https://github.com/wnosphan/CV_Project/graphs/commit-activity
-[forks-shield]: https://img.shields.io/github/forks/wnosphan/CV_Project.svg?style=for-the-badge
-[forks-url]: https://github.com/wnosphan/CV_Project/network/members
-[stars-shield]: https://img.shields.io/github/stars/wnosphan/CV_Project.svg?style=for-the-badge
-[stars-url]: https://github.com/wnosphan/CV_Project/stargazers
-[issues-shield]: https://img.shields.io/github/issues/wnosphan/CV_Project.svg?style=for-the-badge
-[issues-url]: https://github.com/wnosphan/CV_Project/issues
-[license-shield]: https://img.shields.io/github/license/wnosphan/CV_Project.svg?style=for-the-badge
-[license-url]: https://github.com/wnosphan/CV_Project/blob/master/LICENSE.txt
+[commits-shield]: https://img.shields.io/github/commit-activity/w/dokkazy/cvproject?style=for-the-badge&labelColor=000000
+[commits-url]: https://github.com/dokkazy/cvproject/graphs/commit-activity
+[forks-shield]: https://img.shields.io/github/forks/dokkazy/cvproject.svg?style=for-the-badge
+[forks-url]: https://github.com/dokkazy/cvproject/network/members
+[stars-shield]: https://img.shields.io/github/stars/dokkazy/cvproject.svg?style=for-the-badge
+[stars-url]: https://github.com/dokkazy/cvproject/stargazers
+[issues-shield]: https://img.shields.io/github/issues/dokkazy/cvproject.svg?style=for-the-badge
+[issues-url]: https://github.com/dokkazy/cvproject/issues
+[license-shield]: https://img.shields.io/github/license/dokkazy/cvproject.svg?style=for-the-badge
+[license-url]: https://github.com/dokkazy/cvproject/blob/master/LICENSE.txt
 [product-screenshot]: images/OIG3.png
 [React.js]: https://img.shields.io/badge/React-18-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://react.dev/
@@ -322,7 +198,7 @@ Don't forget to give the project a star! Thanks again!
 [java-url]: https://www.oracle.com/java/technologies/downloads/#java17
 [docker.com]: https://img.shields.io/badge/Docker-d4dbd3?style=for-the-badge&logo=docker&logoColor=blue
 [docker-url]: https://www.docker.com/
-[keycloak.org]: https://img.shields.io/badge/Keycloak-23.0.7-ff2f00?style=for-the-badge
+[keycloak.org]: https://img.shields.io/badge/Keycloak-24.0.1-ff2f00?style=for-the-badge
 [keycloak-url]: https://www.keycloak.org/
 [npm.com]: https://img.shields.io/badge/npm-ccc?style=for-the-badge&logo=npm&logoColor=#fff
 [npm-url]: https://www.npmjs.com
