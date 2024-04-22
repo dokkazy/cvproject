@@ -100,7 +100,7 @@ The goal of this project is to secure `cvproject` using Keycloak. `cvproject` co
   ```
   docker compose up
   ```
-- After running successfully, access to `localhost:8080` to config keycloak
+- After running successfully, access to `localhost:8080` and login `username:` `admin` and `password:` `admin` to config keycloak
   <br/>
   <div>
      <img src="keycloak-setting/1.png" alt="Logo" width="49%" >
