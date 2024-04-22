@@ -10,7 +10,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/dokkazy/cvproject">
     <img src="images/OIG3.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -103,7 +103,27 @@ The goal of this project is to secure `cvproject` using Keycloak. `cvproject` co
   docker compose up
   ```
 - After running successfully, access to `localhost:8080` to config keycloak
-  vài hình để cofig keycloak
+  <br/>
+  <div>
+     <img src="keycloak-setting/1.png" alt="Logo" width="49%" >
+     <img src="keycloak-setting/2.png" alt="Logo" width="49%">
+  </div>
+  
+   <img src="keycloak-setting/3.png">
+ - Click `import client` and import the `react-auth.json` in `keycloak-setting`
+   <br/>
+   <br/>
+   <div>
+     <img src="keycloak-setting/4.png" width="49%">
+     <img src="keycloak-setting/5.png" width="49%">
+   </div>
+   <div>
+     <img src="keycloak-setting/6.png" width="49%">
+     <img src="keycloak-setting/7.png" width="49%">
+   </div>
+   <img src="keycloak-setting/8.png">
+
+- Access `localhost:3001` and login to web app, using excel file in `import-file` to add new data
 
   <p align="right">(<a href="#readme-top">back to top</a>)</p>
   
